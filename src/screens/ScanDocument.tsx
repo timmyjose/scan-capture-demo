@@ -4,6 +4,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../App'
 import { useState } from 'react'
 import DocumentScanner from 'react-native-document-scanner-plugin'
+import React from 'react'
 
 const ScanDocument = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
@@ -14,7 +15,6 @@ const ScanDocument = () => {
     const { scannedImages } = await DocumentScanner.scanDocument()
 
     if (scannedImages && scannedImages.length > 0) {
-      console.log(`scannedImages = ${scannedImages}`)
       setScannedImage(scannedImages[0])
     }
   }
