@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "scan-capture-demo",
+    "name": "ScanCaptureDemo",
     "slug": "scan-capture-demo",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -12,16 +12,32 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.timmyjose.scancapturedemo"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.timmyjose.scancapturedemo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5d8ca7be-e3e3-4ede-a7e1-3ac8f0a780dc"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/5d8ca7be-e3e3-4ede-a7e1-3ac8f0a780dc"
+    },
+    "plugins": [
+      "expo-build-properties"
+    ]
   }
 }
