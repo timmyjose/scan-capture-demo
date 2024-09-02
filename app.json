@@ -22,9 +22,6 @@
       },
       "package": "com.timmyjose.scancapturedemo"
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
     "extra": {
       "eas": {
         "projectId": "5d8ca7be-e3e3-4ede-a7e1-3ac8f0a780dc"
@@ -37,7 +34,27 @@
       "url": "https://u.expo.dev/5d8ca7be-e3e3-4ede-a7e1-3ac8f0a780dc"
     },
     "plugins": [
-      "expo-build-properties"
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 24,
+            "compileSdkVersion": 34,
+            "targetSdkVersion": 34,
+            "buildToolsVersion": "34.0.0"
+          },
+          "ios": {
+            "useFrameworks": "static",
+            "deploymentTarget": "13.4"
+          }
+        }
+      ],
+      [
+        "react-native-document-scanner-plugin",
+        {
+          "cameraPermission": "We need camera access, so you can scan documents"
+        }
+      ]
     ]
   }
 }
