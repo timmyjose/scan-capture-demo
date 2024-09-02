@@ -9,7 +9,12 @@ import { Frame, useCameraDevice } from 'react-native-vision-camera'
 const DetectFace = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
-  const faceDetectionOptions = useRef<FaceDetectionOptions>({}).current
+  const faceDetectionOptions = useRef<FaceDetectionOptions>({
+    performanceMode: 'accurate',
+    landmarkMode: 'all',
+    contourMode: 'all',
+    trackingEnabled: false,
+  }).current
   const device = useCameraDevice('front')
 
   useEffect(() => {
