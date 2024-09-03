@@ -43,7 +43,7 @@ function launchGallery(
         const res = await MlkitOcr.detectFromUri(assets[0].uri)
         res.forEach(blk => {
           blk.lines.forEach(line => {
-            console.log(line)
+            console.log(line.text)
           })
         })
         setResult(res)
