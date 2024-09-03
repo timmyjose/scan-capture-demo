@@ -1,22 +1,43 @@
-import { View, Text, StyleSheet, Pressable, Image } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { RootStackParamList } from '../App'
-import { useState } from 'react'
-import DocumentScanner from 'react-native-document-scanner-plugin'
+import { View, Text, StyleSheet, Pressable, Image, Alert } from 'react-native'
+import { useEffect, useState } from 'react'
+import DocumentScanner, { ResponseType } from 'react-native-document-scanner-plugin'
 import React from 'react'
+import * as MediaLibrary from 'expo-media-library'
 
 const ScanDocument = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
-
   const [scannedImage, setScannedImage] = useState<string | null>(null)
+  const [permissionResponse, requestPermission] = MediaLibrary.usePermissions()
+  const [canSaveImageToDevice, setCanSaveImageToDevice] = useState<boolean>(false)
+
+  useEffect(() => {
+    (async () => {
+      if (permissionResponse?.status !== 'granted') {
+        await requestPermission()
+      }
+    })()
+  }, [])
+
+  useEffect(() => {
+    (async () => {
+      setCanSaveImageToDevice(await MediaLibrary.isAvailableAsync())
+    })()
+  }, [])
 
   const scanImage = async () => {
-    const { scannedImages } = await DocumentScanner.scanDocument()
+    const { scannedImages } = await DocumentScanner.scanDocument({
+      responseType: ResponseType.ImageFilePath
+    })
 
     if (scannedImages && scannedImages.length > 0) {
-      setScannedImage(scannedImages[0])
-    }
+      const scannedImageUri = scannedImages[0]
+      setScannedImage(scannedImageUri)
+      // save image to device fs
+      if (canSaveImageToDevice) {
+        await MediaLibrary.saveToLibraryAsync(scannedImageUri)
+      } else {
+        console.warn('Media Library access is not available')
+      }
+    } 
   }
 
   return (
@@ -33,11 +54,6 @@ const ScanDocument = () => {
         style={styles.button}
         onPress={scanImage}>
           <Text>Scan</Text>
-        </Pressable>
-      <Pressable
-        style={styles.button}
-        onPress={() => navigation.navigate('Home')}>
-          <Text>Home</Text>
         </Pressable>
     </View>
   )
