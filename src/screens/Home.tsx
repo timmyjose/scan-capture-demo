@@ -19,6 +19,11 @@ const Home = () => {
         onPress={() => navigation.navigate('DetectFace')}>
           <Text>Detect Face</Text>
         </Pressable>
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate('OCR')}>
+          <Text>OCR</Text>
+        </Pressable>
     </View>
   )
 }
