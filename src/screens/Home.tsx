@@ -16,8 +16,8 @@ const Home = () => {
       </Pressable>
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('CaptureImage')}>
-          <Text>Capture Image</Text>
+        onPress={() => navigation.navigate('DetectFace')}>
+          <Text>Detect Face</Text>
         </Pressable>
     </View>
   )

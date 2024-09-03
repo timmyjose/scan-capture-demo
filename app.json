@@ -13,14 +13,20 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.timmyjose.scancapturedemo"
+      "bundleIdentifier": "com.timmyjose.scancapturedemo",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Camera access is needed for face detection"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.timmyjose.scancapturedemo"
+      "package": "com.timmyjose.scancapturedemo",
+      "permissions": [
+        "android.permission.CAMERA"
+      ]
     },
     "extra": {
       "eas": {

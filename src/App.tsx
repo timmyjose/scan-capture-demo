@@ -1,14 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Home from './screens/Home'
-import ScanDocument from './screens/ScanDocument'
-import DetectFace from './screens/DetectFace'
+import ScanDocument from './screens/ScanDocumentDS'
+import DetectFace from './screens/DetectFaceVC'
 import React from 'react'
 
 export type RootStackParamList = {
   Home: undefined
-  ScanDocument: undefined
-  DetectFace: undefined
+  ScanDocumentDS: undefined
+  ScanDocumentVC: undefined
+  DetectFaceVC: undefined
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
