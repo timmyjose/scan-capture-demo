@@ -24,6 +24,11 @@ const Home = () => {
         onPress={() => navigation.navigate('OCR')}>
           <Text>OCR</Text>
         </Pressable>
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate('Inquiry')}>
+          <Text>Inquiry</Text>
+        </Pressable>
     </View>
   )
 }

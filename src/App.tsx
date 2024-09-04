@@ -5,12 +5,14 @@ import ScanDocument from './screens/ScanDocument'
 import DetectFace from './screens/DetectFace'
 import React from 'react'
 import OCR from './screens/OCR'
+import Inquiry from './screens/e2e/Inquiry'
 
 export type RootStackParamList = {
   Home: undefined
   ScanDocument: undefined
   DetectFace: undefined
   OCR: undefined
+  Inquiry: undefined
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
@@ -23,6 +25,7 @@ const App = () => {
         <Stack.Screen name='ScanDocument' component={ScanDocument} />
         <Stack.Screen name='DetectFace' component={DetectFace} />
         <Stack.Screen name='OCR' component={OCR} />
+        <Stack.Screen name='Inquiry' component={Inquiry} />
       </Stack.Navigator>
     </NavigationContainer>
   )
