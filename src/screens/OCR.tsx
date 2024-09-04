@@ -1,5 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import * as React from 'react'
+import { useState } from 'react'
 import {
   StyleSheet,
   View,
@@ -57,9 +58,9 @@ function launchGallery(
 }
 
 const OCR = () => {
-  const [loading, setLoading] = React.useState<boolean>(false)
-  const [result, setResult] = React.useState<MlkitOcrResult | undefined>()
-  const [image, setImage] = React.useState<Asset | undefined>()
+  const [loading, setLoading] = useState<boolean>(false)
+  const [result, setResult] = useState<MlkitOcrResult | undefined>()
+  const [image, setImage] = useState<Asset | undefined>()
 
   if (loading) {
     return (
